@@ -7,7 +7,7 @@ public class CreateCategory : ICreateCategory
 {
     private readonly ICategoryRepository _categoryRepository;
     private readonly IUnitOfWork _unitOfWork;
-
+ 
     public CreateCategory(
         ICategoryRepository categoryRepository,
         IUnitOfWork unitOfWork
@@ -30,7 +30,7 @@ public class CreateCategory : ICreateCategory
 
         await _categoryRepository.Insert(category, cancellationToken);
         await _unitOfWork.Commit(cancellationToken);
-
+                
         return new CreateCategoryOutput(
             category.Id,
             category.Name,
@@ -40,3 +40,4 @@ public class CreateCategory : ICreateCategory
         );
     }
 }
+
